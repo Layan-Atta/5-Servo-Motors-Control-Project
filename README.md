@@ -1,150 +1,151 @@
 # 5 Servo Motors Control Project
+# مشروع التحكم بخمسة محركات سيرفو
 
-## 📋 Project Overview
-This project demonstrates controlling 5 micro servo motors simultaneously using Arduino Uno. The servos perform a sweep motion for approximately 2 seconds, then hold at 90 degrees.
+## 📋 نظرة عامة على المشروع
+يوضح هذا المشروع كيفية التحكم بـ 5 محركات سيرفو صغيرة (Micro Servo) في نفس الوقت باستخدام أردوينو أونو. تقوم المحركات بحركة مسح (Sweep) لمدة ثانيتين تقريباً، ثم تثبت عند زاوية 90 درجة.
 
-## 🎯 Task Requirements
-Program 5 servo motors to perform the following actions:
-1. Run using the Sweep example for 2 seconds
-2. After that, make all the motors hold at 90 degrees
+## 🎯 متطلبات المهمة
+برمجة 5 محركات سيرفو للقيام بالإجراءات التالية:
+1. التشغيل باستخدام مثال Sweep لمدة ثانيتين
+2. بعد ذلك، جعل جميع المحركات تثبت عند 90 درجة
 
-## ✅ Implementation Confirmation
-**Task Completed Successfully!** ✓
+## ✅ تأكيد تطبيق المهمة
+**المهمة أُنجزت بنجاح!** ✓
 
-The implementation matches the requirements:
-- ✅ All 5 servos start from initial position (0 degrees)
-- ✅ Servos perform sweep motion from 0° → 180° → 0° (approximately 2 seconds with `delay(5)`)
-- ✅ After sweep completes, all servos move to and hold at 90 degrees
-- ✅ Motion executes only once (in `setup()` function)
+التطبيق يطابق المتطلبات:
+- ✅ جميع المحركات الخمسة تبدأ من الموضع الأولي (0 درجة)
+- ✅ المحركات تقوم بحركة المسح من 0° ← 180° ← 0° (حوالي ثانيتين مع `delay(5)`)
+- ✅ بعد اكتمال الحركة، جميع المحركات تنتقل إلى 90 درجة وتثبت
+- ✅ الحركة تُنفذ مرة واحدة فقط (في دالة `setup()`)
 
-## 🔧 Hardware Components
-- **1x Arduino Uno**
-- **5x Micro Servo Motors** (Blue, 3-wire: Brown/Red/Orange)
-- **1x Breadboard**
-- **Jumper Wires**
-- **Power Bank** (for Arduino power supply)
+## 🔧 المكونات المستخدمة
+- **1× أردوينو أونو**
+- **5× محرك سيرفو صغير** (أزرق، 3 أسلاك: بني/أحمر/برتقالي)
+- **1× بريد بورد**
+- **أسلاك توصيل**
+- **باور بانك** (لتزويد الأردوينو بالطاقة)
 
-## 🔌 Wiring Connections
+## 🔌 التوصيلات
 
-### Power Rails (Breadboard)
-- Arduino **GND** → Breadboard negative rail (blue line)
-- Arduino **5V** → Breadboard positive rail (red line)
+### خطوط الطاقة (البريد بورد)
+- **GND** من الأردوينو → الخط السالب في البريد بورد (الخط الأزرق)
+- **5V** من الأردوينو → الخط الموجب في البريد بورد (الخط الأحمر)
 
-### Servo Connections (All 5 servos)
-Each servo has 3 wires:
-- **Brown wire** → Breadboard negative rail (GND)
-- **Red wire** → Breadboard positive rail (5V)
-- **Orange wire** → Arduino digital pin (signal)
+### توصيلات المحركات (الخمسة)
+كل محرك سيرفو له 3 أسلاك:
+- **السلك البني** → الخط السالب في البريد بورد (GND)
+- **السلك الأحمر** → الخط الموجب في البريد بورد (5V)
+- **السلك البرتقالي** → منفذ رقمي في الأردوينو (إشارة التحكم)
 
-### Pin Assignments
-| Servo | Signal Pin |
-|-------|------------|
-| Servo 1 | Pin 9 |
-| Servo 2 | Pin 10 |
-| Servo 3 | Pin 11 |
-| Servo 4 | Pin 6 |
-| Servo 5 | Pin 3 |
+### توزيع المنافذ
+| المحرك | المنفذ |
+|--------|--------|
+| محرك 1 | Pin 9 |
+| محرك 2 | Pin 10 |
+| محرك 3 | Pin 11 |
+| محرك 4 | Pin 6 |
+| محرك 5 | Pin 3 |
 
-## 💻 Code Explanation
+## 💻 شرح الكود
 
-### Key Features
-1. **Initialization (Setup)**
-   - All servos attached to their respective pins
-   - Initial position set to 0 degrees
-   - 500ms delay ensures all servos are ready
+### الخصائص الرئيسية
+1. **الإعداد الأولي (Setup)**
+   - ربط جميع المحركات بمنافذها الخاصة
+   - ضبط الموضع الأولي عند 0 درجة
+   - انتظار 500 ميلي ثانية للتأكد من جاهزية المحركات
 
-2. **Sweep Motion**
-   - Forward sweep: 0° → 180° (using `for` loop with 5ms delay per degree ≈ 1 second)
-   - Backward sweep: 180° → 0° (using `for` loop with 5ms delay per degree ≈ 1 second)
-   - Total sweep time: approximately 2 seconds
+2. **حركة المسح (Sweep)**
+   - المسح للأمام: من 0° إلى 180° (باستخدام حلقة `for` مع تأخير 5ms لكل درجة ≈ ثانية واحدة)
+   - المسح للخلف: من 180° إلى 0° (باستخدام حلقة `for` مع تأخير 5ms لكل درجة ≈ ثانية واحدة)
+   - إجمالي وقت المسح: حوالي ثانيتين
 
-3. **Final Position**
-   - All servos move to and hold at 90 degrees
-   - No code in `loop()` ensures single execution
+3. **الموضع النهائي**
+   - جميع المحركات تنتقل إلى 90 درجة وتثبت
+   - عدم وجود كود في `loop()` يضمن التنفيذ مرة واحدة
 
-### Why `setup()` instead of `loop()`?
-The task requires the action to happen only once, not continuously. By placing all motion code in `setup()`, the program:
-- Executes once when Arduino powers on
-- Completes the task and stops
-- Keeps servos at final position (90°) indefinitely
+### لماذا استخدمنا `setup()` بدلاً من `loop()`؟
+المهمة تتطلب تنفيذ الحركة مرة واحدة فقط، وليس بشكل مستمر. بوضع كل كود الحركة في `setup()`، البرنامج:
+- يُنفذ مرة واحدة عند تشغيل الأردوينو
+- يُكمل المهمة ويتوقف
+- يُبقي المحركات في الموضع النهائي (90°) إلى الأبد
 
-## 🐛 Challenges & Solutions
+## 🐛 التحديات والحلول
 
-### Challenge 1: Connecting Multiple Servos
-**Problem:** Initial confusion about how to connect 5 servos to one Arduino
-- Unclear how to share power between all servos
-- Worried about power supply capability
+### التحدي الأول: توصيل عدة محركات
+**المشكلة:** كان هناك التباس في البداية حول كيفية توصيل 5 محركات بأردوينو واحد
+- عدم الوضوح حول كيفية مشاركة الطاقة بين جميع المحركات
+- القلق بشأن قدرة مصدر الطاقة على تحمل الخمسة محركات
 
-**Solution:**
-- Used breadboard power rails to distribute GND and 5V to all servos
-- Connected only signal wires individually to different Arduino pins
-- Power bank provided sufficient current for 5 micro servos
+**الحل:**
+- استخدام خطوط الطاقة في البريد بورد لتوزيع GND و5V على جميع المحركات
+- توصيل أسلاك الإشارة فقط بشكل فردي إلى منافذ مختلفة في الأردوينو
+- الباور بانك وفّر تياراً كافياً للخمسة محركات الصغيرة
 
-### Challenge 2: Implementing the 2-Second Timing
-**Problem:** Understanding how to limit sweep motion to exactly 2 seconds
-- Initial attempts used `millis()` timing which was complex
-- Confusion between continuous looping and timed execution
+### التحدي الثاني: تطبيق توقيت الثانيتين
+**المشكلة:** فهم كيفية تحديد حركة المسح بثانيتين بالضبط
+- المحاولات الأولى استخدمت `millis()` مما كان معقداً
+- الحيرة بين التكرار المستمر والتنفيذ المؤقت
 
-**Solution:**
-- Used simple `delay()` approach with calculated timing
-- Each degree movement with 5ms delay = approximately 2 seconds total
-- Placed code in `setup()` for single execution instead of complex timing logic
+**الحل:**
+- استخدام طريقة `delay()` البسيطة مع حساب الوقت
+- كل حركة بدرجة واحدة مع تأخير 5ms = حوالي ثانيتين إجمالاً
+- وضع الكود في `setup()` للتنفيذ مرة واحدة بدلاً من منطق توقيت معقد
 
-### Challenge 3: One Slow Servo
-**Problem:** During testing, one servo moved slower than others
-- Suspected wiring issues or defective servo
-- Needed to verify all servos were functioning correctly
+### التحدي الثالث: محرك بطيء
+**المشكلة:** أثناء الاختبار، كان أحد المحركات يتحرك أبطأ من الآخرين
+- الشك في وجود مشاكل في التوصيلات أو عيب في المحرك
+- الحاجة للتحقق من أن جميع المحركات تعمل بشكل صحيح
 
-**Solution:**
-- Created a test program to run all servos for 60 seconds
-- Verified connections were secure
-- Confirmed all servos returned to same position (0°)
-- Test helped identify that all servos were working properly
+**الحل:**
+- إنشاء برنامج اختبار لتشغيل جميع المحركات لمدة 60 ثانية
+- التحقق من أن التوصيلات محكمة
+- التأكد من أن جميع المحركات تعود إلى نفس الموضع (0°)
+- ساعد الاختبار في تحديد أن جميع المحركات تعمل بشكل صحيح
 
-### Challenge 4: Understanding Initial Position
-**Problem:** Needed clarity on starting position and final position
-- Should servos start from random position or specific angle?
-- What happens after the 2-second sweep?
+### التحدي الرابع: فهم الموضع الأولي
+**المشكلة:** الحاجة إلى وضوح حول موضع البداية والموضع النهائي
+- هل يجب أن تبدأ المحركات من موضع عشوائي أو زاوية محددة؟
+- ماذا يحدث بعد حركة المسح لثانيتين؟
 
-**Solution:**
-- Added explicit initialization: all servos set to 0° at startup
-- Clear sequence: 0° → sweep motion → return to 0° → move to 90° → hold
-- This ensures predictable, repeatable behavior
+**الحل:**
+- إضافة تهيئة صريحة: ضبط جميع المحركات عند 0° عند البدء
+- تسلسل واضح: 0° → حركة المسح → العودة إلى 0° → الانتقال إلى 90° → الثبات
+- هذا يضمن سلوكاً قابلاً للتوقع والتكرار
 
-## 📊 Expected Behavior
+## 📊 السلوك المتوقع
 
-1. **Power On:** All servos move to 0 degrees (initial position)
-2. **Wait:** 500ms pause
-3. **Sweep Forward:** Smooth motion from 0° to 180° (~1 second)
-4. **Sweep Backward:** Smooth motion from 180° to 0° (~1 second)
-5. **Final Position:** All servos move to 90° and hold indefinitely
+1. **عند التشغيل:** جميع المحركات تنتقل إلى 0 درجة (الموضع الأولي)
+2. **الانتظار:** توقف مؤقت لمدة 500 ميلي ثانية
+3. **المسح للأمام:** حركة سلسة من 0° إلى 180° (~ثانية واحدة)
+4. **المسح للخلف:** حركة سلسة من 180° إلى 0° (~ثانية واحدة)
+5. **الموضع النهائي:** جميع المحركات تنتقل إلى 90° وتثبت للأبد
 
-## 🎓 Learning Outcomes
+## 🎓 ما تعلمته
 
-As a beginner in electronics, this project taught me:
-- How to control multiple servos simultaneously
-- Using breadboard power rails for shared connections
-- Difference between `setup()` and `loop()` functions
-- Basic servo motor control using Arduino Servo library
-- Troubleshooting hardware connections
-- Importance of testing components individually
+كمبتدئة في الإلكترونيات، علّمني هذا المشروع:
+- كيفية التحكم بعدة محركات سيرفو في نفس الوقت
+- استخدام خطوط الطاقة في البريد بورد للتوصيلات المشتركة
+- الفرق بين دالتي `setup()` و `loop()`
+- أساسيات التحكم بمحركات السيرفو باستخدام مكتبة Servo في أردوينو
+- استكشاف مشاكل التوصيلات وإصلاحها
+- أهمية اختبار المكونات بشكل فردي
 
-## 📝 Notes
+## 📝 ملاحظات
 
-- Total execution time: approximately 2 seconds (matching task requirements)
-- Micro servos operate at 5V with low current draw
-- Using `delay(5)` per degree provides smooth, visible motion
-- Code is beginner-friendly with Arabic comments for clarity
+- إجمالي وقت التنفيذ: حوالي ثانيتين (يطابق متطلبات المهمة)
+- المحركات الصغيرة تعمل على 5V مع استهلاك تيار منخفض
+- استخدام `delay(5)` لكل درجة يوفر حركة سلسة ومرئية
+- الكود مناسب للمبتدئين مع تعليقات بالعربية للوضوح
 
-## 🔮 Future Improvements
+## 🔮 تحسينات مستقبلية
 
-- Add individual servo control for complex choreography
-- Implement button control to restart motion
-- Add LED indicators for each motion phase
-- Create more complex movement patterns
+- إضافة تحكم فردي لكل محرك لحركات معقدة
+- تطبيق التحكم بزر لإعادة تشغيل الحركة
+- إضافة مؤشرات LED لكل مرحلة من الحركة
+- إنشاء أنماط حركة أكثر تعقيداً
 
 ---
 
-**Project Status:** ✅ Complete and Working  
-**Task Requirements:** ✅ Fully Implemented  
-**Date:** November 2025
+**حالة المشروع:** ✅ مكتمل ويعمل  
+**متطلبات المهمة:** ✅ مُطبقة بالكامل  
+**التاريخ:** نوفمبر 2025
